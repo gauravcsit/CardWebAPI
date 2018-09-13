@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<!-- START Head -->
+<head>
+    <!-- START META SECTION -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Card Application</title>
+    <meta name="author" content="pampersdry.info" />
+    <meta name="description" content="Card Application - Best View in IE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <!--/ END META SECTION -->
+    <!-- START STYLESHEETS -->
+    <!-- Plugins stylesheet : optional -->
+    <!--/ Plugins stylesheet -->
+    <!-- Application stylesheet : mandatory -->
+    <link rel="stylesheet" href="/assets/library/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/stylesheet/layout.min.css" />
+    <link rel="stylesheet" href="/assets/stylesheet/uielement.min.css" />
+    <!--/ Application stylesheet -->
+    <!-- END STYLESHEETS -->
+</head>
+<!--/ END Head -->
+<!-- START Body -->
+<body>
+
+    <!-- START Template Main -->
+    <section id="main" role="main">
+        <!-- START Template Container -->
+        <div class="container-fluid">
+            <!-- Page Header -->
+            <div class="page-header page-header-block">
+                <div class="page-header-section">
+                    <h3 class="title semibold">Card Application <small class="pull-right">@Html.ActionLink("CardCheck", "Index", "CardCheck") | @Html.ActionLink("Logs", "Logs", "CardCheck")</small> </h3>
+                </div>
+            </div>
+            <!-- Page Header -->
+            @RenderBody()
+        </div>
+        <!--/ END Template Container -->
+        <!-- START To Top Scroller -->
+        <a href="/assets/#" class="totop animation" data-toggle="waypoints totop" data-marker="#main" data-showanim="bounceIn" data-hideanim="bounceOut" data-offset="-50%"><i class="ico-angle-up"></i></a>
+        <!--/ END To Top Scroller -->
+    </section>
+    <!--/ END Template Main -->
+    <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
+    <!-- Library script : mandatory -->
+    <script type="text/javascript" src="/assets/library/jquery/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/library/jquery/js/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="/assets/library/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/library/core/js/core.min.js"></script>
+    <!--/ Library script -->
+    @RenderSection("scripts", required: false)
+
+
+
+    <!--/ App and page level scrip -->
+    <!--/ END JAVASCRIPT SECTION -->
+</body>
+<!--/ END Body -->
+</html>

@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <!-- START row -->
+        <div class="row">
+
+            <div class="col-md-6">
+                <h4>Operations</h4>
+                <!-- Form horizontal layout -->
+                <div class="form-horizontal panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Fill Details and Click Submit</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Card Number</label>
+                            <div class="col-sm-8">
+                                <input id="txtCardNumber" placeholder="0000 0000 0000 0000" type="text" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Expiry Date (MMYYYY)</label>
+                            <div class="col-sm-8">
+                                <input id="txtExpiryDate" placeholder="052023" type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button id="btnsubmit" type="button" class="btn btn-primary" onclick="">Submit</button>
+                    </div>
+                </div>
+                <!--/ Form horizontal layout -->
+                <div> <h5>Few Cards</h5>
+                    <p>
+                        0000000000000000,
+                        4929965911840019,
+                        3540890842400348,
+                        5348125257302955,
+                        347341025257155,
+                        4024007121664436,
+                        5468186658244679,
+                        7485741254122551
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <!--/ END row -->
+
+    </fieldset>
+
+}
+
+<script type="text/javascript" src="/assets/library/jquery/js/jquery.min.js"></script>
+
+<script type="text/javascript" src="/assets/library/jquery/js/jquery-migrate.min.js"></script>
+
+<script type="text/javascript">
+
+    $('#btnsubmit').click(function () {
+        debugger;
+        var cardNumber = $('#txtCardNumber').val();
+        var expiryDate = $('#txtExpiryDate').val();
+        if (cardNumber != "") {
+            if (expiryDate == "") {
+                alert("Please Enter Expiry Date");
+                    return;
+                }               
+                else {
+                var url = "http://localhost:58114/api/CardValidation/CheckCard/" + cardNumber + "," + expiryDate;
+                    getdatabyurl(url);
+                }
+        }
+        else {
+            alert("Please Enter Card Number");
+            return;
+        }
+
+
+    });
+
+    function getdatabyurl(url) {
+
+
+
+        // Calling WCF
+        $.ajax({
+            url: "@Url.Action("GetRequestResponseByUrl")",
+            data: { "url": url },
+            contentType: "application/json; charset=utf-8",
+            type: "Get",
+            dataType: 'json',
+            success: OnSuccess,
+            failure: function (response) {
+                debugger;
+                alert("Failed");
+                return;
+            },
+            error: function (data) {
+                debugger;
+                console.log("Bad");
+            }
+        });
+    }
+
+    function OnSuccess(response) {
+        debugger;
+        var result = "Card Number : " + response.CardNumber
+            + "\n CardType : " + response.CardType
+        + "\n Result :" + response.Result
+        alert(result);
+        return;
+    }
+
+</script>

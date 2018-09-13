@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CardBankModelStoreContainer" CdmEntityContainer="CardBankEntities1">
+    <EntitySetMapping Name="CardMasters">
+      <EntityTypeMapping TypeName="CardBankModel.CardMaster">
+        <MappingFragment StoreEntitySet="CardMaster">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogTransactions">
+      <EntityTypeMapping TypeName="CardBankModel.LogTransaction">
+        <MappingFragment StoreEntitySet="LogTransactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

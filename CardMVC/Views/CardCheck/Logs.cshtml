@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CardWebAPI.Models.LogTransaction>
+
+@{
+    ViewBag.Title = "Logs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Transaction Logs</h4>
+        <!-- Form horizontal layout -->
+        <div class="form-horizontal panel panel-default">
+            <div class="table-responsive panel-collapse pull out">
+                <table class="table table-bordered table-hover data-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                CardNumber
+                            </th>
+                            <th>
+                                ExpiryDate
+                            </th>
+                            <th>
+                                CardType
+                            </th>
+                            <th>
+                                Result
+                            </th>
+                            <th>
+                                DateIn
+                            </th>                    
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var item in Model)
+                                {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CardNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ExpiryDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CardType)
+                                </td> 
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Result)
+                                </td>                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateIn)
+                                </td>
+                            </tr>
+                                }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--/ Form horizontal layout -->
+    </div>
+</div>
+
